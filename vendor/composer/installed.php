@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'v8.6.12',
-        'version' => '8.6.12.0',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
         'reference' => NULL,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
@@ -395,8 +395,8 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'v8.6.12',
-            'version' => '8.6.12.0',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
             'reference' => NULL,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
@@ -427,6 +427,15 @@
             'reference' => 'e5a3057a5591e1cfe8183034b0203921abe2c902',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/serializable-closure',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'laravel/socialite' => array(
+            'pretty_version' => 'v5.8.1',
+            'version' => '5.8.1.0',
+            'reference' => '9989b4530331597fae811bca240bf4e8f15e804b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/socialite',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -472,6 +481,15 @@
             'reference' => 'a6dfb1194a2946fcdc1f38219445234f65b35c96',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/mime-type-detection',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'league/oauth1-client' => array(
+            'pretty_version' => 'v1.10.1',
+            'version' => '1.10.1.0',
+            'reference' => 'd6365b901b5c287dd41f143033315e2f777e1167',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../league/oauth1-client',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -745,8 +763,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psr/simple-cache' => array(
