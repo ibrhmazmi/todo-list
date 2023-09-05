@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TodoListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// login
+Route::get('/', [LoginController::class,'home']);
+
+//add middleware to avoid un-log personal
+// Todo
+Route::any('/Add', [TodoListController::class,'add']);
+Route::any('/Delete/{item_id}', [TodoListController::class,'delete']);
+Route::get('/List', [TodoListController::class,'list_all']);
+Route::any('/Mark-complete/{item_id}', [TodoListController::class,'mark_complete']);
