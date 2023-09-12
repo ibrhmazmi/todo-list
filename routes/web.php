@@ -25,7 +25,7 @@ Route::get('/Auth/{Social}/Callback', [LoginController::class, 'handleSocialCall
 
 //add middleware to avoid un-log personal
 // Todo
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/Dashboard', [LoginController::class, 'dashboard']);
     Route::any('/Logout', [LogoutController::class, 'logout'])->name('Logout');
     Route::any('/Add', [TodoListController::class, 'add']);

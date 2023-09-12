@@ -28,27 +28,26 @@ class LoginController extends Controller
     {
 
         try {
-            $user = Socialite::driver($social)->user();
+            $social_user = Socialite::driver($social)->user();
 
-            $existing_user = User::where($social . '_id', $user->getId())->first();
+            $user = User::where($social . '_id', $social_user->getId())->first();
 
-            if (!$existing_user) {
+            if (!$user) {
                 //add log user as new user
-                $new_user = User::create([
+                $user = User::create([
                     'full_name' => $user->getName(),
                     'email' => $user->getEmail(),
                     $social . '_id' => $user->id,
                     'avatar' => $user->avatar ?? '',
                 ]);
-                Auth::login($new_user);
-            } else {
-                Auth::login($existing_user);
             }
-            return redirect()->intended('/Dashboard');
+            Auth::login($user);
+            // return redirect()->intended('/Dashboard');
+            $token = $user->createToken('social')->plainTextToken;
+            return redirect('/Dashboard?token=' . $token);
         } catch (\Throwable $e) {
-            dd('Something when wrong ! <br>' . $e);
+            // dd('Something when wrong ! <br>' . $e);
+            return response()->json(['error' => 'Something went wrong!'], 500);
         }
     }
-
-
 }
