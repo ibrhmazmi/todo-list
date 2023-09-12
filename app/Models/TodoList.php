@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Observers\TodoListObserver;
 
 class TodoList extends Model
 {
@@ -17,10 +18,19 @@ class TodoList extends Model
         'task_name',
         'item_completion'
     ];
+    protected static function boot()
+    {
+        parent::boot();
 
-    public function getAllList(){
-          // Use Eloquent to fetch all records from the 'todo_list' table
-          return $this->select('item_id','task_name','item_completion')->get();
+        // Define a global query scope to filter by user_id
+        static::addGlobalScope('user_id', function ($query) {
+            $query->where('user_id', getId());
+        });
     }
 
+    public function getAllList()
+    {
+        // Use Eloquent to fetch all records from the 'todo_list' table
+        return $this->select('item_id', 'task_name', 'item_completion')->get();
+    }
 }
