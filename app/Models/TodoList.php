@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Observers\TodoListObserver;
 
 class TodoList extends Model
 {
@@ -26,6 +25,7 @@ class TodoList extends Model
         static::addGlobalScope('user_id', function ($query) {
             $query->where('user_id', getId());
         });
+
     }
 
     public function getAllList()

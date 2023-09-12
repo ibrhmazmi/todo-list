@@ -11,15 +11,20 @@ class TodoListController extends Controller
 
     public function add(Request $request)
     {
+        $userid = getId();
         $task_name = $request->task_name;
 
         //validate
+        if (!$userid) {
+            return response()->json(['error' => 'Please Login']);
+        }
         if (!$task_name) {
             return response()->json(['error' => 'Task name is required']);
         }
 
         $add_todo = new TodoList();
         $add_todo->task_name = $task_name;
+        $add_todo->user_id = $userid;
         $add_todo->save();
 
         return response()->json(['message' => 'Task added successfully'], 200);
@@ -30,8 +35,8 @@ class TodoListController extends Controller
     {
         $todoLists = new TodoList();
         $todoLists = $todoLists->getAllList();
-        if ($todoLists->count() == 0) {
-            return response()->json(['message' => 'Please add a new task']);
+        if ($todoLists->count() <= 0) {
+            return response()->json(['message' => 'No new task']);
         }
 
         // Return the result as a JSON response
@@ -41,8 +46,9 @@ class TodoListController extends Controller
 
     public function mark_complete($id)
     {
+        $userid = getId();
         // Find the task by item_id
-        $task = TodoList::where('item_id', $id)->first();
+        $task = TodoList::where([['item_id', $id],['user_id',$userid]])->first();
 
         // Check if the task exists
         if (!$task) {
@@ -63,8 +69,9 @@ class TodoListController extends Controller
 
     public function delete($id)
     {
-        $task = TodoList::first('item_id', $id);
-        
+        $userid = getId();
+        $task = TodoList::where([['item_id', $id],['user_id',$userid]])->first();
+
         if (!$task) {
             return response()->json(['message' => 'Task not found']);
         }
