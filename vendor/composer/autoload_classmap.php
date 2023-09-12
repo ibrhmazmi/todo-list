@@ -2236,6 +2236,7 @@ return array(
     'Laravel\\Socialite\\Two\\GitlabProvider' => $vendorDir . '/laravel/socialite/src/Two/GitlabProvider.php',
     'Laravel\\Socialite\\Two\\GoogleProvider' => $vendorDir . '/laravel/socialite/src/Two/GoogleProvider.php',
     'Laravel\\Socialite\\Two\\InvalidStateException' => $vendorDir . '/laravel/socialite/src/Two/InvalidStateException.php',
+    'Laravel\\Socialite\\Two\\LinkedInOpenIdProvider' => $vendorDir . '/laravel/socialite/src/Two/LinkedInOpenIdProvider.php',
     'Laravel\\Socialite\\Two\\LinkedInProvider' => $vendorDir . '/laravel/socialite/src/Two/LinkedInProvider.php',
     'Laravel\\Socialite\\Two\\ProviderInterface' => $vendorDir . '/laravel/socialite/src/Two/ProviderInterface.php',
     'Laravel\\Socialite\\Two\\SlackProvider' => $vendorDir . '/laravel/socialite/src/Two/SlackProvider.php',
