@@ -7,6 +7,10 @@
 1.3. Instruction for building the app
     composer install && npm install && npm run prod
 
+    > create new table name "todo_list"
+    > import sql from "/sql/todo_list.sql"
+    > reconfig database config in .env file
+
 1.4. interface documentation
     1.  login to your social account.
         p/s: Facebook login is not working as it need to run on secure(SSL), https:// domain.
