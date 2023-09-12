@@ -35,10 +35,10 @@ class LoginController extends Controller
             if (!$user) {
                 //add log user as new user
                 $user = User::create([
-                    'full_name' => $user->getName(),
-                    'email' => $user->getEmail(),
-                    $social . '_id' => $user->id,
-                    'avatar' => $user->avatar ?? '',
+                    'full_name' => $social_user->getName(),
+                    'email' => $social_user->getEmail(),
+                    $social . '_id' => $social_user->id,
+                    'avatar' => $social_user->avatar ?? '',
                 ]);
             }
             Auth::login($user);
